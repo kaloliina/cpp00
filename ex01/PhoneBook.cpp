@@ -57,6 +57,16 @@ void Phonebook::showContact()
 	}
 	std::cout << TYPEINDEX;
 	getline(std::cin, input);
+	if (input.size() != 1 || input[0] < '1' || input[0] > '8')
+	{
+		std::cout << SEARCH_INDEX;
+		return ;
+	}
 	search = input[0] - '0' - 1;
+	if (search >= index)
+	{
+		std::cout << SEARCH_INDEX;
+		return ;
+	}
 	arr[search].show();
 }

@@ -8,6 +8,7 @@
 #define INPUTOPTIONS "Type either <ADD>, <SEARCH> or <EXIT>\n"
 #define TYPEINDEX "Type the index of the contact you wish to see.\n"
 #define MAX_CONTACTS "Maximum amount of contacts reached, overwriting the oldest.\n"
+#define SEARCH_INDEX "This phonebook only accepts the indexes shown next to the contact."
 
 class Phonebook {
 public:
