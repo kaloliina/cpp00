@@ -14,8 +14,8 @@ class Phonebook {
 public:
 Contact arr[8];
 int index;
-Phonebook() : index(0) {}
-~Phonebook() {}
+Phonebook();
+~Phonebook();
 
 void addContact();
 void showContact();

@@ -1,8 +1,16 @@
 
 #include "PhoneBook.hpp"
 
-//index needs to start at 1
-//the constructor and the destructr should be here
+Contact::Contact()
+{
+
+}
+Contact::~Contact()
+{
+
+}
+
+
 void Contact::show() const {
 	std::cout << index << "|" << firstName << "|" << lastName << "|" << nickName << std::endl;
 }
@@ -22,8 +30,6 @@ time_t Contact::get_time()
 {
 	return timestamp;
 }
-//where do we put the index to 0?
-
 
 int main(void)
 {
@@ -42,4 +48,3 @@ int main(void)
 	}
 	return (0);
 }
-//getline() function used for getting the

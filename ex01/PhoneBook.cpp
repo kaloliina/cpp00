@@ -1,5 +1,18 @@
 #include "PhoneBook.hpp"
+//check if brief mentions class called PhoneBook or Phonebook
+// Phonebook() : index(0) {}
+Phonebook::Phonebook()
+{
+ index = 0;
+}
 
+Phonebook::~Phonebook()
+{
+
+}
+//This one should prompt the message that contact information cannot be left empty and reprompt the person to write the message again.
+//Should I add a "" to every string and have a while loop that checks as long as the input is empty, prompt the messages again and again...?
+//And maybe have it in a separate function gets called for every specific one? or somehow rotates over every one of them.
 void Phonebook::addContact()
 {
 std::string f, l, n, p, d;
@@ -9,6 +22,8 @@ std::string input;
 	std::cout << index << std::endl;
 	std::cout << FIRSTNAME << std::endl;
 	getline(std::cin, f);
+	if (f.size() == 0)
+		std::cout << "Sorry but it cant be left empty" << std::endl;
 	std::cout << LASTNAME << std::endl;
 	getline(std::cin, l);
 	std::cout << NICKNAME << std::endl;
@@ -44,7 +59,6 @@ std::string input;
 	}
 }
 
-//missing error handling
 void Phonebook::showContact()
 {
 	int		search;
