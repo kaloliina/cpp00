@@ -10,9 +10,27 @@ Contact::~Contact()
 
 }
 
-
-void Contact::show() const {
-	std::cout << index << "|" << firstName << "|" << lastName << "|" << nickName << std::endl;
+//if setw is first, then the text will be right aligned. If its under the text, it will be left aligned
+//This should be const but it cannot be const at the moment xD
+//This one should have a version where you just give one piece of info per line for the contact you gave.
+//Also I cannot resize or append the original things because I still need them xd
+void Contact::show() {
+	if (firstName.size() > 10)
+	{
+		firstName.resize(9);
+		firstName.append(".");
+	}
+	if (lastName.size() > 10)
+	{
+		lastName.resize(9);
+		lastName.append(".");
+	}
+	if (nickName.size() > 10)
+	{
+		nickName.resize(9);
+		nickName.append(".");
+	}
+	std::cout << std::setw(10) << index << "|" << std::setw(10) << firstName << "|" << std::setw(10) << lastName << "|" << std::setw(10) << nickName << std::endl;
 }
 
 Contact::Contact(int index, std::string firstName, std::string lastName, std::string nickName, std::string phoneNumber, std::string darkestSecret)

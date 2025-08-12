@@ -3,35 +3,38 @@
 // Phonebook() : index(0) {}
 Phonebook::Phonebook()
 {
- index = 0;
+	index = 0;
 }
 
 Phonebook::~Phonebook()
 {
 
 }
-//This one should prompt the message that contact information cannot be left empty and reprompt the person to write the message again.
-//Should I add a "" to every string and have a while loop that checks as long as the input is empty, prompt the messages again and again...?
-//And maybe have it in a separate function gets called for every specific one? or somehow rotates over every one of them.
+
+std::string update_properties(std::string lala, std::string important)
+{
+	while (true)
+	{
+		std::cout << lala << std::endl;
+		getline(std::cin, important);
+		if (important.size() != 0)
+			break;
+		else
+			std::cout << EMPTY_INPUT << std::endl;
+	}
+	return (important);
+}
+
 void Phonebook::addContact()
 {
-std::string f, l, n, p, d;
-
-std::string input;
+	std::string f, l, n, p, d;
 
 	std::cout << index << std::endl;
-	std::cout << FIRSTNAME << std::endl;
-	getline(std::cin, f);
-	if (f.size() == 0)
-		std::cout << "Sorry but it cant be left empty" << std::endl;
-	std::cout << LASTNAME << std::endl;
-	getline(std::cin, l);
-	std::cout << NICKNAME << std::endl;
-	getline(std::cin, n);
-	std::cout << PHONENUMBER << std::endl;
-	getline(std::cin, p);
-	std::cout << DARKESTSECRET << std::endl;
-	getline(std::cin, d);
+	f = update_properties(FIRSTNAME, f);
+	l = update_properties(LASTNAME, l);
+	n = update_properties(NICKNAME, n);
+	p = update_properties(PHONENUMBER, p);
+	d = update_properties(DARKESTSECRET, d);
 	if (index < 3)
 	{
 	arr[index] = Contact(index + 1, f, l, n, p, d);
