@@ -62,6 +62,7 @@ void Phonebook::addContact()
 	}
 }
 
+//this one should have a specific case for showing the info line by line!
 void Phonebook::showContact()
 {
 	int		search;
