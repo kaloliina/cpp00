@@ -1,16 +1,16 @@
 #include "PhoneBook.hpp"
-//check if brief mentions class called PhoneBook or Phonebook
-// Phonebook() : index(0) {}
-Phonebook::Phonebook()
+
+PhoneBook::PhoneBook()
 {
 	index = 0;
 }
 
-Phonebook::~Phonebook()
+PhoneBook::~PhoneBook()
 {
 
 }
-
+//does phone number need to be digits only?
+//also this uses silly naming
 std::string update_properties(std::string lala, std::string important)
 {
 	while (true)
@@ -24,8 +24,8 @@ std::string update_properties(std::string lala, std::string important)
 	}
 	return (important);
 }
-
-void Phonebook::addContact()
+//this should use something different than index
+void PhoneBook::addContact()
 {
 	std::string f, l, n, p, d;
 
@@ -48,7 +48,7 @@ void Phonebook::addContact()
 		index = 0;
 		time_t timestamp;
 		time(&timestamp);
-		while (index < 3)
+		while (index < MAX_CONTACTS_AMOUNT)
 		{
 			if (arr[index].get_time() < timestamp)
 			{
@@ -63,14 +63,19 @@ void Phonebook::addContact()
 }
 
 //this one should have a specific case for showing the info line by line!
-void Phonebook::showContact()
+void PhoneBook::searchContact() const
 {
 	int		search;
 	int i = 0;
 	std::string input;
+	if (index == 0)
+	{
+		std::cout << NO_CONTACTS << std::endl;
+		return ;
+	}
 	while (i < index)
 	{
-		arr[i].show();
+		arr[i].show(1);
 		i++;
 	}
 	std::cout << TYPEINDEX;
@@ -86,5 +91,5 @@ void Phonebook::showContact()
 		std::cout << SEARCH_INDEX;
 		return ;
 	}
-	arr[search].show();
+	arr[search].show(2);
 }

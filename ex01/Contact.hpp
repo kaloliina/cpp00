@@ -1,6 +1,8 @@
-
+#ifndef CONTACT_HPP
+#define CONTACT_HPP
 #include <iostream>
 #include <iomanip>
+#include <string>
 /*Class is user-defined data type which holds its own data members and member functions that can be used by creating an instance of that class
 Class doesn't exist until created? Similarities to structs...?
 Private and public (and protected) are access specifiers which specify the access level...
@@ -31,6 +33,7 @@ public:
 	Contact(int index, std::string firstName, std::string lastName, std::string nickName, std::string phoneNumber, std::string darkestSecret);
 	~Contact();
 
-	void show();
-	time_t get_time();
+	void show(int mode) const;
+	time_t get_time() const;
 };
+#endif

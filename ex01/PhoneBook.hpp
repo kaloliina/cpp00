@@ -1,5 +1,6 @@
-#include <iostream>
-#include <iomanip>
+
+#ifndef PHONEBOOK_HPP
+#define PHONEBOOK_HPP
 #include "Contact.hpp"
 #define FIRSTNAME "Type first name: "
 #define LASTNAME "Type last name: "
@@ -11,14 +12,18 @@
 #define MAX_CONTACTS "Maximum amount of contacts reached, overwriting the oldest.\n"
 #define SEARCH_INDEX "This phonebook only accepts the indexes shown next to the contact."
 #define EMPTY_INPUT "I'm sorry but this crappy phonebook will not accept empty input"
+#define NO_CONTACTS "This phonebook has no contacts whatsoever."
+#define MAX_CONTACTS_AMOUNT 8
 
-class Phonebook {
-public:
+class PhoneBook {
+private:
 Contact arr[8];
 int index;
-Phonebook();
-~Phonebook();
+public:
+PhoneBook();
+~PhoneBook();
 
 void addContact();
-void showContact();
+void searchContact() const;
 };
+#endif
