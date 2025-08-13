@@ -7,27 +7,27 @@ PhoneBook::PhoneBook()
 
 PhoneBook::~PhoneBook()
 {
-
 }
-//does phone number need to be digits only?
-//also this uses silly naming
-std::string update_properties(std::string lala, std::string important)
+//Does the phone number need to be digits only?
+//Does this need to be a member function???
+std::string update_properties(std::string message, std::string answer)
 {
 	while (true)
 	{
-		std::cout << lala << std::endl;
-		getline(std::cin, important);
-		if (important.size() != 0)
+		std::cout << message << std::endl;
+		getline(std::cin, answer);
+		if (answer.size() != 0)
 			break;
 		else
 			std::cout << EMPTY_INPUT << std::endl;
 	}
-	return (important);
+	return (answer);
 }
-//this should use something different than index
+
 void PhoneBook::addContact()
 {
 	std::string f, l, n, p, d;
+	int new_index, oldest;
 
 	std::cout << index << std::endl;
 	f = update_properties(FIRSTNAME, f);
@@ -35,38 +35,37 @@ void PhoneBook::addContact()
 	n = update_properties(NICKNAME, n);
 	p = update_properties(PHONENUMBER, p);
 	d = update_properties(DARKESTSECRET, d);
-	if (index < 3)
+	if (index < MAX_CONTACTS_AMOUNT)
 	{
-	arr[index] = Contact(index + 1, f, l, n, p, d);
-	index++;
-	std::cout << index << std::endl;
+		arr[index] = Contact(index + 1, f, l, n, p, d);
+		index++;
+		std::cout << index << std::endl;
 	}
 	else
 	{
 		std::cout << MAX_CONTACTS << std::endl;
-		int oldest;
-		index = 0;
+		new_index = 0;
 		time_t timestamp;
 		time(&timestamp);
-		while (index < MAX_CONTACTS_AMOUNT)
+		while (new_index < MAX_CONTACTS_AMOUNT)
 		{
-			if (arr[index].get_time() < timestamp)
+			if (arr[new_index].get_time() < timestamp)
 			{
-				timestamp = arr[index].get_time();
-				oldest = index;
+				timestamp = arr[new_index].get_time();
+				oldest = new_index;
 			}
-			index++;
+			new_index++;
 		}
 		arr[oldest] = Contact(oldest + 1, f, l, n, p, d);
 		std::cout << oldest << std::endl;
 	}
 }
 
-//this one should have a specific case for showing the info line by line!
+//Should newlinie be in the macro or is it better to have it in the std::endl?
 void PhoneBook::searchContact() const
 {
-	int		search;
-	int i = 0;
+	int	search;
+	int	i = 0;
 	std::string input;
 	if (index == 0)
 	{

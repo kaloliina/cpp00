@@ -37,3 +37,4 @@ public:
 	time_t get_time() const;
 };
 #endif
+//show should be const
