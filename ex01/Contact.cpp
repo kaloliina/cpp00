@@ -14,30 +14,32 @@ Contact::~Contact()
 }
 
 //if setw is first, then the text will be right aligned. If its under the text, it will be left aligned
-//I wonder if its okay that im not using the contact to fetch these but im actually modifying it here...
-//this one has extremely weird naming convention
+//I wonder if its okay that im not using the contact to fetch these but im actually creating duplicates of them here
 void Contact::show(int mode) const {
-	std::string namey, lastie, nicksie;
-	namey = firstName.substr(0, firstName.size());
-	lastie = lastName.substr(0, lastName.size());
-	nicksie = nickName.substr(0, nickName.size());
-	if (firstName.size() > 10)
-	{
-		namey.resize(9);
-		namey.append(".");
-	}
-	if (lastName.size() > 10)
-	{
-		lastie.resize(9);
-		lastie.append(".");
-	}
-	if (nickName.size() > 10)
-	{
-		nicksie.resize(9);
-		nicksie.append(".");
-	}
+	std::string name, last, nick;
+
 	if (mode == 1)
-		std::cout << std::setw(10) << index << "|" << std::setw(10) << namey << "|" << std::setw(10) << lastie << "|" << std::setw(10) << nicksie << std::endl;
+	{
+		name = firstName.substr(0, firstName.size());
+		last = lastName.substr(0, lastName.size());
+		nick = nickName.substr(0, nickName.size());
+		if (firstName.size() > 10)
+		{
+			name.resize(9);
+			name.append(".");
+		}
+		if (lastName.size() > 10)
+		{
+			last.resize(9);
+			last.append(".");
+		}
+		if (nickName.size() > 10)
+		{
+			nick.resize(9);
+			nick.append(".");
+		}
+		std::cout << std::setw(10) << index << "|" << std::setw(10) << name << "|" << std::setw(10) << last << "|" << std::setw(10) << nick << std::endl;
+	}
 	else
 		std::cout << firstName << std::endl << lastName << std::endl << nickName << std::endl << phoneNumber << std::endl << darkestSecret << std::endl;
 }

@@ -3,6 +3,7 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
+//Do I have to include string or iomanip?
 /*Class is user-defined data type which holds its own data members and member functions that can be used by creating an instance of that class
 Class doesn't exist until created? Similarities to structs...?
 Private and public (and protected) are access specifiers which specify the access level...

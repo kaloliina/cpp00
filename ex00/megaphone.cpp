@@ -1,12 +1,12 @@
-#include <iostream>
-using namespace std;
 
-//missing newline
+#include <iostream>
+
+//Do I need to include <string> or is it fiine to have iosstream>
 int main(int argc, char *argv[])
 {
 	int	i = 0;
 	int	y = 1;
-	string n = "* LOUD AND UNBEARABLE FEEDBACK NOISE *\n";
+	std::string n = "* LOUD AND UNBEARABLE FEEDBACK NOISE *\n";
 	char c;
 	while (y < argc)
 	{
@@ -17,12 +17,12 @@ int main(int argc, char *argv[])
 				c = argv[y][i] - 32;
 			else
 				c = argv[y][i];
-			cout << c;
+			std::cout << c;
 			i++;
 		}
 		y++;
 	}
 	if (argc ==  1)
-		cout << n;
+		std::cout << n;
 	return (0);
 }

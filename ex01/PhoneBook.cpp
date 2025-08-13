@@ -28,6 +28,7 @@ void PhoneBook::addContact()
 {
 	std::string f, l, n, p, d;
 	int new_index, oldest;
+	time_t timestamp;
 
 	std::cout << index << std::endl;
 	f = update_properties(FIRSTNAME, f);
@@ -45,7 +46,6 @@ void PhoneBook::addContact()
 	{
 		std::cout << MAX_CONTACTS << std::endl;
 		new_index = 0;
-		time_t timestamp;
 		time(&timestamp);
 		while (new_index < MAX_CONTACTS_AMOUNT)
 		{
