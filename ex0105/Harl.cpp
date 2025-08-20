@@ -23,3 +23,20 @@ void Harl::error(void)
 {
 	std::cout << "This is unacceptable! I want to speak to the manager now." << std::endl;	
 }
+//so we are declaring a pointer and referencing to the member functions?
+void Harl::complain( std::string level )
+{
+	void (Harl::*ptr[])(void)
+	= {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
+	std::string messages[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+	int i = 0;
+	while (i < 4)
+	{
+		if (level == messages[i])
+			(this->*ptr[i])();
+		i++;
+	}
+}
+//previously i had Harl there instead of this, why ddnt that work?
+//Although the if  else questions mention confuses me becaue could one basically
+//use switch statements (which were mentioned in the exercise)
