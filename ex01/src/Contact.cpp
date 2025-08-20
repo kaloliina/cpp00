@@ -1,5 +1,4 @@
-
-#include "PhoneBook.hpp"
+#include "../include/PhoneBook.hpp"
 
 //When contact gets instantiated, we are basically creating an object (an instance of that class)
 //It allocates memory for that object and calls the constructor.

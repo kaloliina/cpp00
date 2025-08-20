@@ -1,4 +1,4 @@
-NAME = Phonebook
+NAME = Megaphone
 CC = c++
 CFLAGS = -Wall -Wextra -Werror
 SRC_DIR = src/
