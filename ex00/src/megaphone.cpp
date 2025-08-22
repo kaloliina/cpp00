@@ -1,28 +1,25 @@
-
 #include <iostream>
 
-//Do I need to include <string> or is it fiine to have iosstream>
 int main(int argc, char *argv[])
 {
 	int	i = 0;
 	int	y = 1;
-	std::string n = "* LOUD AND UNBEARABLE FEEDBACK NOISE *\n";
-	char c;
+	std::string n = "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
 	while (y < argc)
 	{
 		i = 0;
 		while (argv[y][i] != '\0')
 		{
-			if (argv[y][i] >= 97 && argv[y][i] <= 122)
-				c = argv[y][i] - 32;
-			else
-				c = argv[y][i];
-			std::cout << c;
+			if (argv[y][i] >= 'a' && argv[y][i] <= 'z')
+				argv[y][i] = toupper(argv[y][i]);
+			std::cout << argv[y][i];
 			i++;
 		}
 		y++;
 	}
 	if (argc ==  1)
-		std::cout << n;
+		std::cout << n << std::endl;
+	else
+		std::cout << std::endl;
 	return (0);
 }

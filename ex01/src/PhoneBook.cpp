@@ -8,8 +8,8 @@ PhoneBook::PhoneBook()
 PhoneBook::~PhoneBook()
 {
 }
-//Does the phone number need to be digits only?
-//Does this need to be a member function???
+
+//Not sure whether this should be a member function?
 std::string update_properties(std::string message, std::string answer)
 {
 	while (true)
@@ -30,7 +30,6 @@ void PhoneBook::addContact()
 	int new_index, oldest;
 	time_t timestamp;
 
-	std::cout << index << std::endl;
 	f = update_properties(FIRSTNAME, f);
 	l = update_properties(LASTNAME, l);
 	n = update_properties(NICKNAME, n);
@@ -40,7 +39,6 @@ void PhoneBook::addContact()
 	{
 		arr[index] = Contact(index + 1, f, l, n, p, d);
 		index++;
-		std::cout << index << std::endl;
 	}
 	else
 	{
@@ -61,7 +59,6 @@ void PhoneBook::addContact()
 	}
 }
 
-//Should newlinie be in the macro or is it better to have it in the std::endl?
 void PhoneBook::searchContact() const
 {
 	int	search;
@@ -77,17 +74,17 @@ void PhoneBook::searchContact() const
 		arr[i].show(1);
 		i++;
 	}
-	std::cout << TYPEINDEX;
+	std::cout << TYPEINDEX << std::endl;
 	getline(std::cin, input);
 	if (input.size() != 1 || input[0] < '1' || input[0] > '8')
 	{
-		std::cout << SEARCH_INDEX;
+		std::cout << SEARCH_INDEX << std::endl;
 		return ;
 	}
 	search = input[0] - '0' - 1;
 	if (search >= index)
 	{
-		std::cout << SEARCH_INDEX;
+		std::cout << SEARCH_INDEX << std::endl;
 		return ;
 	}
 	arr[search].show(2);

@@ -1,20 +1,20 @@
 NAME = Phonebook
-CC = c++
-CFLAGS = -Wall -Wextra -Werror
+CXX = c++
+CXXFLAGS = -Wall -Wextra -Werror
 SRC_DIR = src/
 OBJ_DIR = obj/
 INC_DIR = include/
-SRCS = $(wildcard $(SRC_DIR)*.cpp)
+SRCS = $(SRC_DIR)Contact.cpp $(SRC_DIR)PhoneBook.cpp $(SRC_DIR)main.cpp
 OBJS = $(SRCS:$(SRC_DIR)%.cpp=$(OBJ_DIR)%.o)
-HEADERS = $(wildcard $(INC_DIR)/*.hpp)
+HEADERS = $(INC_DIR)Contact.hpp $(INC_DIR)PhoneBook.hpp
 
 all: $(NAME)
 
 $(NAME) : $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.cpp $(HEADERS) | $(OBJ_DIR)
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)

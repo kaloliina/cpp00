@@ -1,20 +1,20 @@
-NAME = Megaphone
-CC = c++
-CFLAGS = -Wall -Wextra -Werror
+NAME = megaphone
+CXX = c++
+CXXFLAGS = -Wall -Wextra -Werror
 SRC_DIR = src/
 OBJ_DIR = obj/
 INC_DIR = include/
-SRCS = $(wildcard $(SRC_DIR)*.cpp)
+SRCS = $(SRC_DIR)megaphone.cpp
 OBJS = $(SRCS:$(SRC_DIR)%.cpp=$(OBJ_DIR)%.o)
-HEADERS = $(wildcard $(INC_DIR)/*.hpp)
+HEADERS =
 
 all: $(NAME)
 
 $(NAME) : $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.cpp $(HEADERS) | $(OBJ_DIR)
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)

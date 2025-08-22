@@ -12,8 +12,8 @@ Contact::~Contact()
 {
 }
 
-//if setw is first, then the text will be right aligned. If its under the text, it will be left aligned
-//I wonder if its okay that im not using the contact to fetch these but im actually creating duplicates of them here
+/* If setw is first, then text will be right-aligned.
+I wonder if it's okay that I'm not using the contact to fetch  this info but actually creating duplicates*/
 void Contact::show(int mode) const {
 	std::string name, last, nick;
 
@@ -37,7 +37,7 @@ void Contact::show(int mode) const {
 			nick.resize(9);
 			nick.append(".");
 		}
-		std::cout << std::setw(10) << index << "|" << std::setw(10) << name << "|" << std::setw(10) << last << "|" << std::setw(10) << nick << std::endl;
+		std::cout << "|" << std::setw(10) << index << "|" << std::setw(10) << name << "|" << std::setw(10) << last << "|" << std::setw(10) << nick << "|" << std::endl;
 	}
 	else
 		std::cout << firstName << std::endl << lastName << std::endl << nickName << std::endl << phoneNumber << std::endl << darkestSecret << std::endl;

@@ -7,12 +7,12 @@
 #define NICKNAME "Type nickname: "
 #define PHONENUMBER "Type phone number: "
 #define DARKESTSECRET "Type darkest secret: "
-#define INPUTOPTIONS "Type either <ADD>, <SEARCH> or <EXIT>\n"
-#define TYPEINDEX "Type the index of the contact you wish to see.\n"
-#define MAX_CONTACTS "Maximum amount of contacts reached, overwriting the oldest.\n"
-#define SEARCH_INDEX "This phonebook only accepts the indexes shown next to the contact.\n"
-#define EMPTY_INPUT "I'm sorry but this crappy phonebook will not accept empty input.\n"
-#define NO_CONTACTS "This phonebook has no contacts whatsoever.\n"
+#define INPUTOPTIONS "Type either <ADD>, <SEARCH> or <EXIT>."
+#define TYPEINDEX "Type the index of the contact you wish to see."
+#define MAX_CONTACTS "Maximum amount of contacts reached, overwriting the oldest."
+#define SEARCH_INDEX "This phonebook does not accept indexes that do not belong to any current contact."
+#define EMPTY_INPUT "I'm sorry but this crappy phonebook will not accept empty input."
+#define NO_CONTACTS "This phonebook has no contacts whatsoever."
 #define MAX_CONTACTS_AMOUNT 8
 
 class PhoneBook {

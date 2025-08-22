@@ -6,7 +6,7 @@ int main(void)
 	std::string command;
 	while (1)
 	{
-	std::cout << INPUTOPTIONS;
+	std::cout << INPUTOPTIONS << std::endl;
 	getline(std::cin, command);
 	if (command.compare("ADD") == 0)
 		PhoneBook.addContact();
