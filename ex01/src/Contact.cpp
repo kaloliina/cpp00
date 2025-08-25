@@ -19,9 +19,9 @@ void Contact::show(int mode) const {
 
 	if (mode == 1)
 	{
-		name = firstName.substr(0, firstName.size());
-		last = lastName.substr(0, lastName.size());
-		nick = nickName.substr(0, nickName.size());
+		name = firstName;
+		last = lastName;
+		nick = nickName;
 		if (firstName.size() > 10)
 		{
 			name.resize(9);
@@ -43,6 +43,9 @@ void Contact::show(int mode) const {
 		std::cout << firstName << std::endl << lastName << std::endl << nickName << std::endl << phoneNumber << std::endl << darkestSecret << std::endl;
 }
 
+/*This could use references to the existing strings.
+Because right now each argument is copied into the constructor parameter and
+it's unnecessary because we already have the strings to point towards.*/
 Contact::Contact(int index, std::string firstName, std::string lastName, std::string nickName, std::string phoneNumber, std::string darkestSecret)
 {
 	this->index = index;

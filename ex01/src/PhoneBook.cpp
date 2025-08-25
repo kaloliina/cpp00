@@ -9,9 +9,9 @@ PhoneBook::~PhoneBook()
 {
 }
 
-//Not sure whether this should be a member function?
-std::string update_properties(std::string message, std::string answer)
+std::string PhoneBook::update_properties(const std::string& message) const
 {
+	std::string answer;
 	while (true)
 	{
 		std::cout << message << std::endl;
@@ -30,11 +30,11 @@ void PhoneBook::addContact()
 	int new_index, oldest;
 	time_t timestamp;
 
-	f = update_properties(FIRSTNAME, f);
-	l = update_properties(LASTNAME, l);
-	n = update_properties(NICKNAME, n);
-	p = update_properties(PHONENUMBER, p);
-	d = update_properties(DARKESTSECRET, d);
+	f = update_properties(FIRSTNAME);
+	l = update_properties(LASTNAME);
+	n = update_properties(NICKNAME);
+	p = update_properties(PHONENUMBER);
+	d = update_properties(DARKESTSECRET);
 	if (index < MAX_CONTACTS_AMOUNT)
 	{
 		arr[index] = Contact(index + 1, f, l, n, p, d);

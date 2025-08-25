@@ -19,6 +19,7 @@ class PhoneBook {
 private:
 Contact arr[8];
 int index;
+std::string update_properties(const std::string& message) const;
 public:
 PhoneBook();
 ~PhoneBook();
