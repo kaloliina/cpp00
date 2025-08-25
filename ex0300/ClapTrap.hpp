@@ -3,6 +3,9 @@
 #include <iostream>
 #include <string>
 #include <iomanip>
+/* Copy Constructor is called when you are creating a new object from an existing one.
+Copy assignment is called when you are assigning to an already existing object from another existing object. 
+So basically you are overriding existing object's current information with another object's info.*/
 class ClapTrap {
 private:
 std::string name;
@@ -10,8 +13,12 @@ int hitPoints;
 int energyPoints;
 int attackDamage;
 public:
+	ClapTrap();
 	ClapTrap(std::string name);
+	ClapTrap(const ClapTrap& copy);
+	ClapTrap &operator=(const ClapTrap &src); 
 	~ClapTrap();
+
 
 	void attack(const std::string& target);
 	void takeDamage(unsigned int amount);

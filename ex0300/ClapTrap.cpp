@@ -1,11 +1,39 @@
 #include "ClapTrap.hpp"
-ClapTrap::ClapTrap(std::string name)
+
+ClapTrap::ClapTrap() : name("Default"), hitPoints(10), energyPoints(10), attackDamage(0)
+{
+	std::cout << "Default Constructor called!" << std::endl;
+}
+
+ClapTrap::ClapTrap(std::string name) : hitPoints(10), energyPoints(10), attackDamage(0)
 {
 	this->name = name;
-	hitPoints = 10;
-	energyPoints = 10;
-	attackDamage = 0;
-	std::cout << "A wild claptrap has been summoned!" << std::endl;
+	//Name could also be added to the initializer list?
+	std::cout << "A wild ClapTrap has been summoned!" << std::endl;
+}
+
+ClapTrap::ClapTrap(const ClapTrap& copy)
+{
+	std::cout << "Copy Constructor called!" << std::endl;
+	this->name = copy.name;
+	this->hitPoints = copy.hitPoints;
+	this->energyPoints = copy.energyPoints;
+	this->attackDamage = copy.attackDamage;
+}
+
+/*It checks if the current object (this) and the source object (other) are not the same object in memory.
+To avoid deletions or errors...*/
+ClapTrap& ClapTrap::operator=(const ClapTrap &src)
+{
+	std::cout << "Copy Assignment called!" << std::endl;
+	if (this != &src)
+	{
+		this->name = src.name;
+		this->hitPoints = src.hitPoints;
+		this->energyPoints = src.energyPoints;
+		this->attackDamage = src.attackDamage;		
+	}
+	return *this;
 }
 //its weird that attackdamage is 0 but still takedamage sennds how much its supposed to take damage...
 ClapTrap::~ClapTrap()
