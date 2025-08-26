@@ -1,5 +1,5 @@
 #include <iostream>
-
+/*What is the difference of toupper and std::toupper*/
 int main(int argc, char *argv[])
 {
 	int	i = 0;

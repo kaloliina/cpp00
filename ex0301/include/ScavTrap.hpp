@@ -1,21 +1,27 @@
-#ifndef CLAPTRAP_HPP
-#define CLAPTRAP_HPP
+#ifndef SCAVTRAP_HPP
+#define SCAVTRAP_HPP
+#include "ClapTrap.hpp"
 #include <iostream>
 #include <string>
 #include <iomanip>
-class ClapTrap {
+/*So now we create ScavTrap class which inherits charasteristics from ClapTrap (so in one way this is connected to the base Class)*/
+class ScavTrap : public ClapTrap {
 private:
 std::string name;
 int hitPoints;
 int energyPoints;
 int attackDamage;
 public:
-	ClapTrap(std::string name);
-	~ClapTrap();
+	ScavTrap();
+	ScavTrap(std::string name);
+	ScavTrap(const ScavTrap& copy);
+	ScavTrap &operator=(const ScavTrap &src); 
+	~ScavTrap();
 
 	void attack(const std::string& target);
 	void takeDamage(unsigned int amount);
 	void beRepaired(unsigned int amount);
+	void guardGate();
 };
 #endif
 
@@ -25,3 +31,8 @@ public:
 //Cannot do anything if no hit points r energy points left.
 //Soo I guess the point of this exercise is to have only 1 class and then create
 //for example 2 inherited objects (that have the class properties).
+// class ScavTrap: public ClapTrap
+// {
+// 	public:
+// 	void guardGate();
+// };

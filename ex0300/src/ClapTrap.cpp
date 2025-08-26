@@ -1,4 +1,4 @@
-#include "ClapTrap.hpp"
+#include "../include/ClapTrap.hpp"
 
 ClapTrap::ClapTrap() : name("Default"), hitPoints(10), energyPoints(10), attackDamage(0)
 {
@@ -35,7 +35,7 @@ ClapTrap& ClapTrap::operator=(const ClapTrap &src)
 	}
 	return *this;
 }
-//its weird that attackdamage is 0 but still takedamage sennds how much its supposed to take damage...
+
 ClapTrap::~ClapTrap()
 {
 	std::cout << "ClapTrap disappeared into the depths of abyss." << std::endl;
@@ -43,30 +43,48 @@ ClapTrap::~ClapTrap()
 
 void ClapTrap::attack(const std::string& target)
 {
-	if (energyPoints <= 0 || hitPoints <= 0)
+	if (energyPoints <= 0)
+	{
+		std::cout << "ClapTrap " << name << " cannot attack because they ran out of energy!" << std::endl;
 		return ;
+	}
+	if (hitPoints <= 0)
+	{
+		std::cout << "ClapTrap " << name << " cannot attack because they are dead!" << std::endl;
+		return ;
+	}
 	energyPoints = energyPoints - 1;
 	std::cout << "ClapTrap " << name << " attacks " << target << ", causing " << attackDamage << " points of damage!" << std::endl;
 }
+
 void ClapTrap::takeDamage(unsigned int amount)
 {
+	if (hitPoints <= 0)
+	{
+		std::cout << "ClapTrap " << name << " is already dead and beaten to the ground!" << std::endl;
+	}
 	hitPoints = hitPoints - amount;
-	std::cout << "ClapTrap " << name << " is barely wounded..." << std::endl;
+	std::cout << "ClapTrap " << name << " took " << amount << " points of damage." << std::endl;
 }
-//do we  need feedback if person is dead or doesnt have hit points left...
+
+/*
+- Hit point refers to health
+- Energy points is energy*/
 void ClapTrap::beRepaired(unsigned int amount)
 {
-	if (energyPoints <= 0 || hitPoints <= 0)
-		return ;	
+	if (energyPoints <= 0)
+	{
+		std::cout << "ClapTrap " << name << " cannot repair itself because they don't have any energy left!" << std::endl;
+		return ;
+	}
+	if (hitPoints <= 0)
+	{
+		std::cout << "ClapTrap " << name << " cannot repair itself when dead!" << std::endl;
+		return ;
+	}
 	energyPoints = energyPoints - 1;
 	hitPoints = hitPoints + amount;
 	std::cout << "ClapTrap " << name << " returns to its den and licks its wounds." << std::endl;
 }
-//Is there a better way to print the messages, it feels weird that the strings need to be divided with <<
-//when it attacks, it causes the target to lose attackdamage amount of hit points.
-//When repairing, it gets amount hit points back
-//Attacking and repairing costs 1 energy point each
-//Cannot do anything if no hit points r energy points left.
-//create proper test case for this
-//• From Module 02 to Module 09, your classes must be designed in the Orthodox
-//Canonical Form, except when explicitely stated otherwise.
+/*Is there a better way to print the messages, it feels weird that the strings need to be divided with
+<< ...*/
