@@ -14,12 +14,12 @@
 #define EMPTY_INPUT "I'm sorry but this crappy phonebook will not accept empty input."
 #define NO_CONTACTS "This phonebook has no contacts whatsoever."
 #define MAX_CONTACTS_AMOUNT 8
+#define INFO_AMOUNT 5
 
 class PhoneBook {
 private:
 Contact arr[8];
 int index;
-std::string update_properties(const std::string& message) const;
 public:
 PhoneBook();
 ~PhoneBook();

@@ -1,5 +1,6 @@
 #include <iostream>
-/*What is the difference of toupper and std::toupper*/
+/*Adding std:: before toupper is explicitly telling that we want to use the
+standard C++ library function*/
 int main(int argc, char *argv[])
 {
 	int	i = 0;
@@ -11,7 +12,7 @@ int main(int argc, char *argv[])
 		while (argv[y][i] != '\0')
 		{
 			if (argv[y][i] >= 'a' && argv[y][i] <= 'z')
-				argv[y][i] = toupper(argv[y][i]);
+				argv[y][i] = std::toupper(argv[y][i]);
 			std::cout << argv[y][i];
 			i++;
 		}

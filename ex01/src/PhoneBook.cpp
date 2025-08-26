@@ -9,35 +9,29 @@ PhoneBook::~PhoneBook()
 {
 }
 
-std::string PhoneBook::update_properties(const std::string& message) const
+void PhoneBook::addContact()
 {
-	std::string answer;
-	while (true)
+	std::string info[] = {FIRSTNAME, LASTNAME, NICKNAME, PHONENUMBER, DARKESTSECRET};
+	std::string answer[INFO_AMOUNT];
+	int i = 0;
+	while (i < INFO_AMOUNT)
 	{
-		std::cout << message << std::endl;
-		getline(std::cin, answer);
-		if (answer.size() != 0)
+		while (true)
+		{
+		std::cout << info[i] << std::endl;
+		std::getline(std::cin, answer[i]);
+		if (answer[i].size() != 0)
 			break;
 		else
 			std::cout << EMPTY_INPUT << std::endl;
+		}
+		i++;
 	}
-	return (answer);
-}
-
-void PhoneBook::addContact()
-{
-	std::string f, l, n, p, d;
 	int new_index, oldest;
 	time_t timestamp;
-
-	f = update_properties(FIRSTNAME);
-	l = update_properties(LASTNAME);
-	n = update_properties(NICKNAME);
-	p = update_properties(PHONENUMBER);
-	d = update_properties(DARKESTSECRET);
 	if (index < MAX_CONTACTS_AMOUNT)
 	{
-		arr[index] = Contact(index + 1, f, l, n, p, d);
+		arr[index] = Contact(index + 1, answer[0], answer[1], answer[2], answer[3], answer[4]);
 		index++;
 	}
 	else
@@ -54,7 +48,8 @@ void PhoneBook::addContact()
 			}
 			new_index++;
 		}
-		arr[oldest] = Contact(oldest + 1, f, l, n, p, d);
+		arr[oldest] = Contact(oldest + 1, answer[0], answer[1], answer[2], answer[3], answer[4]);
+		//this is redundant!
 		std::cout << oldest << std::endl;
 	}
 }
