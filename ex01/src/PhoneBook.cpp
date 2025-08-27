@@ -12,21 +12,21 @@ void PhoneBook::addContact()
 	std::string info[] = {FIRSTNAME, LASTNAME, NICKNAME, PHONENUMBER, DARKESTSECRET};
 	std::string answer[INFO_AMOUNT];
 	int i = 0;
+	int new_index, oldest;
+	time_t timestamp;
 	while (i < INFO_AMOUNT)
 	{
 		while (true)
 		{
-		std::cout << info[i] << std::endl;
-		std::getline(std::cin, answer[i]);
-		if (answer[i].size() != 0)
-			break;
-		else
-			std::cout << EMPTY_INPUT << std::endl;
+			std::cout << info[i] << std::endl;
+			std::getline(std::cin, answer[i]);
+			if (answer[i].size() != 0)
+				break;
+			else
+				std::cout << EMPTY_INPUT << std::endl;
 		}
 		i++;
 	}
-	int new_index, oldest;
-	time_t timestamp;
 	if (index < MAX_CONTACTS_AMOUNT)
 	{
 		arr[index] = Contact(index + 1, answer[0], answer[1], answer[2], answer[3], answer[4]);

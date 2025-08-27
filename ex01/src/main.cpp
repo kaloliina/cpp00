@@ -1,7 +1,5 @@
 #include "../include/PhoneBook.hpp"
 
-/*Only question is if I should have the show function creating additional strings
-Also review the showContact once more*/
 int main(void)
 {
 	PhoneBook PhoneBook;
