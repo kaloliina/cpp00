@@ -72,7 +72,7 @@ void PhoneBook::searchContact() const
 		std::cout << SEARCH_INDEX << std::endl;
 		return ;
 	}
-	search = input[0] - '0' - 1;
+	search = std::stoi(input) - 1;
 	if (search >= index)
 	{
 		std::cout << SEARCH_INDEX << std::endl;
