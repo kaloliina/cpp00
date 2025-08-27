@@ -1,22 +1,18 @@
 #include "../include/PhoneBook.hpp"
 
-//When contact gets instantiated, we are basically creating an object (an instance of that class)
-//It allocates memory for that object and calls the constructor.
-//So class is like the blueprint or the recipe and object (instance) is the actual thing built from that blueprint
-Contact::Contact()
-{
-}
+/*When class gets instantiated, we are creating an object (an instance of that class)
+- It allocates memory for that object and calls the constructor.
+- One could say that Class is like a blueprint/recipe and object is the actual thing built from that recipe.
+*/
+Contact::Contact() { }
 
-//When the program ends, we automatically call destructor which then frees the allocated space.
-Contact::~Contact()
-{
-}
+/*When the program ends, we automatically call the destructor which frees the allocated space*/
+Contact::~Contact() { }
 
-/* If setw is first, then text will be right-aligned.
-I wonder if it's okay that I'm not using the contact to fetch  this info but actually creating duplicates*/
-void Contact::show(int mode) const {
+/*If setw is set first, the text will be right-aligned*/
+void Contact::show(int mode) const
+{
 	std::string name, last, nick;
-
 	if (mode == 1)
 	{
 		name = firstName;
@@ -43,10 +39,9 @@ void Contact::show(int mode) const {
 		std::cout << firstName << std::endl << lastName << std::endl << nickName << std::endl << phoneNumber << std::endl << darkestSecret << std::endl;
 }
 
-/*This could use references to the existing strings.
-Because right now each argument is copied into the constructor parameter and
-it's unnecessary because we already have the strings to point towards.*/
-Contact::Contact(int index, std::string firstName, std::string lastName, std::string nickName, std::string phoneNumber, std::string darkestSecret)
+/*This uses references to existing strings. If we did not have references, each argument would be copied into the constructor parameter which
+is unnecessary because we already have strings to point towards*/
+Contact::Contact(int index, std::string& firstName, std::string& lastName, std::string& nickName, std::string& phoneNumber, std::string& darkestSecret)
 {
 	this->index = index;
 	this->timestamp = time(&this->timestamp);

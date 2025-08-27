@@ -3,23 +3,15 @@
 #include <iostream>
 #include <iomanip>
 
-/*Class is user-defined data type which holds its own data members and member functions that can be used by creating an instance of that class
-Class doesn't exist until one is instantiated. (similarish to structs)
-Private and public (and protected) are access specifiers which specify the access level...
-Meaning if there is a private specifier, these elements can only be controlled within the class
-but if theres a public speficier it can be accessed from outside the class.
-Underneath the data members we have the constructros and destructors.
-These are special class members which are called by the compiler every time an object of that class
-is instantiated. They are used to construct the objects and making them ready to use.
-Then we have parameterized constructors which basically can instantiate a class by giving detailed info
-to data members. 
-Even if we are using the parameterized constructors mainly, we need a default constructor because when instiating
-object Phonebook, we need to tell that there will be "default" objects constructed. And normally, all classes would have default
-constructors, destructors etc but if we add a type of constructor in the class, it will not create any of those by default.
-Then we have destructor which deallocates all the mem previously used by the object and it's called
-when the scope ends.
-Then of course we have the class functions and for these, the brief mentions declarations should only be in the header file
-so no brackets here...
+/*
+Class is user-defined data type which holds its own data members and member functions that can be used by creating an instance of that class.
+- Class does not exist until one is instantiated.
+- Private and public are access specifiers which specify the access level. Meaning that if data members are marked to be private,
+the elements can only be adjusted within the class.
+- In addition classes have constructors and destructors. These class members are called by the compiler every time an object of that class is instantiated.
+They construct the objects, allocate memory for them to be ready to be used. Destructor then deallocates all the memory used by the object and is called
+when the scope ends. If not defined in class, the default "constructors" would exist by default.
+But if one defines even one of them, the compiler expects that every required constructor is also defined.
 */
 class Contact {
 private:
@@ -32,7 +24,7 @@ std::string phoneNumber;
 std::string darkestSecret;
 public:
 	Contact();
-	Contact(int index, std::string firstName, std::string lastName, std::string nickName, std::string phoneNumber, std::string darkestSecret);
+	Contact(int index, std::string& firstName, std::string& lastName, std::string& nickName, std::string& phoneNumber, std::string& darkestSecret);
 	~Contact();
 
 	void show(int mode) const;

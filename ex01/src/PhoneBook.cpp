@@ -5,9 +5,7 @@ PhoneBook::PhoneBook()
 	index = 0;
 }
 
-PhoneBook::~PhoneBook()
-{
-}
+PhoneBook::~PhoneBook() { }
 
 void PhoneBook::addContact()
 {
@@ -49,8 +47,6 @@ void PhoneBook::addContact()
 			new_index++;
 		}
 		arr[oldest] = Contact(oldest + 1, answer[0], answer[1], answer[2], answer[3], answer[4]);
-		//this is redundant!
-		std::cout << oldest << std::endl;
 	}
 }
 
@@ -70,7 +66,7 @@ void PhoneBook::searchContact() const
 		i++;
 	}
 	std::cout << TYPEINDEX << std::endl;
-	getline(std::cin, input);
+	std::getline(std::cin, input);
 	if (input.size() != 1 || input[0] < '1' || input[0] > '8')
 	{
 		std::cout << SEARCH_INDEX << std::endl;
