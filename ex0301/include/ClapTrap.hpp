@@ -5,9 +5,10 @@
 #include <iomanip>
 /* Copy Constructor is called when you are creating a new object from an existing one.
 Copy assignment is called when you are assigning to an already existing object from another existing object. 
-So basically you are overriding existing object's current information with another object's info.*/
+So basically you are overriding existing object's current information with another object's info.
+This is changed to protected because we can't access these members if they are private. But protected means we can inherit these*/
 class ClapTrap {
-private:
+protected:
 std::string name;
 int hitPoints;
 int energyPoints;

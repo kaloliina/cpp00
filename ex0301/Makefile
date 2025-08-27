@@ -4,9 +4,9 @@ CXXFLAGS = -Wall -Wextra -Werror
 SRC_DIR = src/
 OBJ_DIR = obj/
 INC_DIR = include/
-SRCS = $(SRC_DIR)ClapTrap.cpp $(SRC_DIR)main.cpp
+SRCS = $(SRC_DIR)ClapTrap.cpp $(SRC_DIR)ScavTrap.cpp $(SRC_DIR)main.cpp
 OBJS = $(SRCS:$(SRC_DIR)%.cpp=$(OBJ_DIR)%.o)
-HEADERS = $(INC_DIR)ClapTrap.hpp
+HEADERS = $(INC_DIR)ClapTrap.hpp $(INC_DIR)ScavTrap.hpp
 
 all: $(NAME)
 

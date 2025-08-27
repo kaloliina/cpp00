@@ -9,6 +9,7 @@ And we don't need the data members because those are always copied by default bu
 And if the functions will behave differently depending on the class*/
 class ScavTrap : public ClapTrap {
 private:
+	bool isGuarding;
 public:
 	ScavTrap();
 	ScavTrap(std::string name);

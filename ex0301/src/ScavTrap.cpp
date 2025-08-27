@@ -2,31 +2,36 @@
 
 ScavTrap::ScavTrap() : ClapTrap()
 {
-	std::cout << "Default Constructor called!" << std::endl;
+	this->hitPoints = 100;
+	this->energyPoints = 50;
+	this->attackDamage = 20;
+	this->isGuarding = false;
+	std::cout << "Default ScavTrap Constructor called!" << std::endl;
 }
 
 /*So this uses the constructor but then overwrites the information with scavtraps info?*/
-ScavTrap::ScavTrap(std::string name) : ClapTrap()
+ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
-	this->name = name;
-	hitPoints = 100;
-	energyPoints = 50;
-	attackDamage = 20;
+	this->hitPoints = 100;
+	this->energyPoints = 50;
+	this->attackDamage = 20;
+	this->isGuarding = false;
 	std::cout << "A wild ScavTrap has been summoned!" << std::endl;
 }
 
-ClapTrap::ClapTrap(const ClapTrap& copy)
+ScavTrap::ScavTrap(const ScavTrap& copy) : ClapTrap(copy)
 {
-	std::cout << "Copy Constructor called!" << std::endl;
-	this->name = copy.name;
-	this->hitPoints = copy.hitPoints;
-	this->energyPoints = copy.energyPoints;
-	this->attackDamage = copy.attackDamage;
+	this->isGuarding = false;
+	std::cout << "ScavTrap Copy Constructor called!" << std::endl;
 }
 
 /*It checks if the current object (this) and the source object (other) are not the same object in memory.
-To avoid deletions or errors...*/
-ClapTrap& ClapTrap::operator=(const ClapTrap &src)
+To avoid deletions or errors...
+//So here we dont refer to the ClapTrap because we are dealing with already existing object..?
+Might be good to practise the copy and copy assignment
+And I guess we don't have to put isGuarding here to false because this object already exists
+and should have it set already!*/
+ScavTrap& ScavTrap::operator=(const ScavTrap &src)
 {
 	std::cout << "Copy Assignment called!" << std::endl;
 	if (this != &src)
@@ -39,55 +44,52 @@ ClapTrap& ClapTrap::operator=(const ClapTrap &src)
 	return *this;
 }
 
-ClapTrap::~ClapTrap()
+ScavTrap::~ScavTrap()
 {
-	std::cout << "ClapTrap disappeared into the depths of abyss." << std::endl;
+	std::cout << "ScavTrap disappeared into the depths of abyss." << std::endl;
 }
 
-void ClapTrap::attack(const std::string& target)
+void ScavTrap::attack(const std::string& target)
 {
+	if (isGuarding == true)
+	{
+		std::cout << "ScavTrap " << name << " cannot attack when its sole focus is on guarding the gate!" << std::endl;
+		return ;
+	}
 	if (energyPoints <= 0)
 	{
-		std::cout << "ClapTrap " << name << " cannot attack because they ran out of energy!" << std::endl;
+		std::cout << "ScavTrap " << name << " cannot attack because they ran out of energy!" << std::endl;
 		return ;
 	}
 	if (hitPoints <= 0)
 	{
-		std::cout << "ClapTrap " << name << " cannot attack because they are dead!" << std::endl;
+		std::cout << "ScavTrap " << name << " cannot attack because they are dead!" << std::endl;
 		return ;
 	}
 	energyPoints = energyPoints - 1;
-	std::cout << "ClapTrap " << name << " attacks " << target << ", causing " << attackDamage << " points of damage!" << std::endl;
+	std::cout << "ScavTrap " << name << " attacks " << target << ", causing " << attackDamage << " points of damage!" << std::endl;
 }
 
-void ClapTrap::takeDamage(unsigned int amount)
+void ScavTrap::guardGate()
 {
 	if (hitPoints <= 0)
 	{
-		std::cout << "ClapTrap " << name << " is already dead and beaten to the ground!" << std::endl;
-	}
-	hitPoints = hitPoints - amount;
-	std::cout << "ClapTrap " << name << " took " << amount << " points of damage." << std::endl;
-}
-
-/*
-- Hit point refers to health
-- Energy points is energy*/
-void ClapTrap::beRepaired(unsigned int amount)
-{
-	if (energyPoints <= 0)
-	{
-		std::cout << "ClapTrap " << name << " cannot repair itself because they don't have any energy left!" << std::endl;
+		std::cout << "ScavTrap " << name << " cannot possibly guard the gate when already dead!" << std::endl;
 		return ;
 	}
-	if (hitPoints <= 0)
+	if (isGuarding == true)
 	{
-		std::cout << "ClapTrap " << name << " cannot repair itself when dead!" << std::endl;
+		std::cout << "ScavTrap " << name << " continues to guard the gate in honor!" << std::endl;
+		return ;
+	}
+	if (energyPoints <= 0)
+	{
+		std::cout << "ScavTrap " << name << " does not have any energy left in order to guard the gate!" << std::endl;
 		return ;
 	}
 	energyPoints = energyPoints - 1;
-	hitPoints = hitPoints + amount;
-	std::cout << "ClapTrap " << name << " returns to its den and licks its wounds." << std::endl;
+	isGuarding = true;
+	std::cout << "ScavTrap " << name << " begins to guard the gate!" << std::endl;
 }
 /*Is there a better way to print the messages, it feels weird that the strings need to be divided with
 << ...*/
