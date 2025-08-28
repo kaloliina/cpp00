@@ -20,6 +20,8 @@ void PhoneBook::addContact()
 		{
 			std::cout << info[i] << std::endl;
 			std::getline(std::cin, answer[i]);
+			if (std::cin.eof())
+				exit(1);
 			if (answer[i].size() != 0)
 				break;
 			else
@@ -60,6 +62,7 @@ void PhoneBook::searchContact() const
 		std::cout << NO_CONTACTS << std::endl;
 		return ;
 	}
+	std::cout << "|" << std::setw(10) << "INDEX" << "|" << std::setw(10) << "FIRST NAME" << "|" << std::setw(10) << "LAST NAME" << "|" << std::setw(10) << "NICKNAME" << "|" << std::endl;
 	while (i < index)
 	{
 		arr[i].show(1);
@@ -67,6 +70,8 @@ void PhoneBook::searchContact() const
 	}
 	std::cout << TYPEINDEX << std::endl;
 	std::getline(std::cin, input);
+	if (std::cin.eof())
+		exit(1);
 	if (input.size() != 1 || input[0] < '1' || input[0] > '8')
 	{
 		std::cout << SEARCH_INDEX << std::endl;

@@ -8,6 +8,8 @@ int main(void)
 	{
 	std::cout << INPUTOPTIONS << std::endl;
 	std::getline(std::cin, command);
+	if (std::cin.eof())
+		break;
 	if (command.compare("ADD") == 0)
 		PhoneBook.addContact();
 	if (command.compare("SEARCH") == 0)

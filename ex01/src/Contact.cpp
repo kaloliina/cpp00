@@ -49,7 +49,7 @@ Contact::Contact(int index, std::string& firstName, std::string& lastName, std::
 	this->lastName = lastName;
 	this->nickName = nickName;
 	this->phoneNumber = phoneNumber;
-	this->darkestSecret = darkestSecret;
+	this->darkestSecret = darkestSecret; 
 }
 
 time_t Contact::get_time() const
